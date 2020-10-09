@@ -1,4 +1,3 @@
-% Animation Class for a box with a covariance ellipse
 classdef boxAnimation
     properties
         side % Side length

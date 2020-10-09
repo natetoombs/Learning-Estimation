@@ -33,8 +33,7 @@ classdef dataPlotter < handle
             self.Px_history = NaN*ones(1,round((param.t_end-param.t_start)/param.t_plot));
             self.Py_history = NaN*ones(1,round((param.t_end-param.t_start)/param.t_plot));
             self.index = 1;
-            
-%             % For live plots
+%             
 %             figure(2), clf
 %             subplot(4, 1, 1)
 %                 hold on
@@ -94,15 +93,13 @@ classdef dataPlotter < handle
 %             set(self.Py_handle, 'Xdata', self.time_history, 'Ydata', self.Py_history)
         end
         function self = plot(self)
-            figure(2), clf
-            % Plot x data (truth and estimate)
+                        figure(2), clf
             subplot(4, 1, 1)
                 hold on
                 self.x_handle = plot(self.time_history, self.x_history, 'b');
                 self.xhat_handle = plot(self.time_history, self.xhat_history, 'g');
                 ylabel('x')
                 title('X Data')
-            % Plot y data (truth and estimate)
             subplot(4, 1, 2)
                 hold on
                 self.y_handle = plot(self.time_history, self.y_history, 'b');
@@ -110,14 +107,12 @@ classdef dataPlotter < handle
                 ylabel('y')
                 title('Y Data')
             subplot(4, 1, 3)
-            % Plot x error data (error and P)
                 hold on
                 self.xerr_handle = plot(self.time_history, self.xerr_history, 'r');
                 self.Px_handle = plot(self.time_history, 3*self.Px_history.^(1/2), 'b');
                 self.Px_handle = plot(self.time_history, -3*self.Px_history.^(1/2), 'b');
                 ylabel('X Error / P')
                 title('X Error Data')
-            % Plot y error data (error and P)
             subplot(4,1,4)
                 hold on
                 self.yerr_handle = plot(self.time_history, self.yerr_history, 'r');
