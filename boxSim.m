@@ -1,6 +1,7 @@
 clear; clc;
 
-boxParam
+boxParam % Load Params
+
 if param.show_animation
     truth_animation = boxAnimation(param, 0, param.st_dev, 'b', 1);
     est_animation = boxAnimation(param, 1, param.st_dev, 'g', 0);
@@ -46,8 +47,10 @@ while t < param.t_end
         sm = 0;
     end
     
+    % Update truth
     x = x + del_x;
     y = y + del_y;
+    % Update estimates
     x_hat = x_hat + del_x + param.st_dev*randn();
     y_hat = y_hat + del_y + param.st_dev*randn();
     
@@ -57,12 +60,12 @@ while t < param.t_end
         zy = y + param.meas_noise*randn();
         z = [zx;zy];
         Y = z - X_hat;
-        S = param.H*P*param.H' + param.R;
-        K = P*param.H*pinv(S);
-        X_hat = X_hat + K*Y;
+        S = param.H * P * param.H' + param.R;
+        K = P * param.H * pinv(S);
+        X_hat = X_hat + K * Y;
         x_hat = X_hat(1);
         y_hat = X_hat(2);
-        P = (eye(2) - K*param.H)*P;
+        P = (eye(2) - K * param.H) * P;
     end
     
     Q = param.Q;
