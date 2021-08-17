@@ -1,4 +1,4 @@
-classdef dataPlotter < handle
+classdef dataPlotter5 < handle
     properties
         time_history
         x_history
@@ -22,7 +22,7 @@ classdef dataPlotter < handle
         Py_handle
     end
     methods
-        function self = dataPlotter(param)
+        function self = dataPlotter5(param)
             self.time_history = NaN*ones(1,round((param.t_end-param.t_start)/param.t_plot));
             self.x_history = NaN*ones(1,round((param.t_end-param.t_start)/param.t_plot));
             self.y_history = NaN*ones(1,round((param.t_end-param.t_start)/param.t_plot));

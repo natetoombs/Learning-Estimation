@@ -1,3 +1,9 @@
+% Assignment 2:
+% The blue box represents truth, the actual position of the box, while the
+% green box represents the estimate. A measurement update occurs every N
+% steps, reducing the covariance and increasing the accuracy of the
+% estimate.
+
 clear; clc;
 
 boxParam % Load Params
